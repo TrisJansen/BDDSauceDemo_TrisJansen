@@ -42,7 +42,7 @@ public class BuyPage {
     @FindBy(css = "#continue")
     private WebElement continueButton;
 
-    @FindBy(xpath = "//div[@class='cart_item_label']")
+    @FindBy(xpath = "//div[@class='inventory_item_name']")
     private WebElement cartItem;
 
     @FindBy(xpath = "//button[@id='finish']")
@@ -59,7 +59,7 @@ public class BuyPage {
         cartButton.click();
     }
 
-    public void remove(){
+    public void removeProductTestallTheThingTshirtRed(){
         removeButton.click();
     }
     public void checkOut(){
@@ -84,9 +84,5 @@ public class BuyPage {
     public void finishButtonClick() {
         finishButton.click();
     }
-
-
-
-
 
 }

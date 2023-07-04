@@ -19,7 +19,7 @@ public class BuySteps {
         this.webDriver = Hooks.webDriver;
     }
 
-    @Then("User pick the product Test.allTheThings TShirt Red")
+    @And("User pick the product Test.allTheThings TShirt Red")
     public void selectProduct1(){
         BuyPage buyPage = new BuyPage(webDriver);
         buyPage.clickAdd1();
@@ -29,7 +29,7 @@ public class BuySteps {
         BuyPage buyPage = new BuyPage(webDriver);
         buyPage.clickAdd2();
     }
-    @Then("User click cart logo")
+    @And("User click cart logo")
     public void clickCartButton(){
         BuyPage buyPage = new BuyPage(webDriver);
         buyPage.cart();
@@ -37,27 +37,29 @@ public class BuySteps {
     @And("User remove Test.allTheThing TShirt Red")
     public void clickRemove(){
         BuyPage buyPage = new BuyPage(webDriver);
-        buyPage.remove();
+        buyPage.removeProductTestallTheThingTshirtRed();
     }
-    @Then("User want to checkout the product")
+    @And("User want to checkout the product")
     public void clickCheckout(){
         BuyPage buyPage = new BuyPage(webDriver);
         buyPage.checkOut();
     }
     @When("User input {string} as firstName and input {string} as lastName and input {string} as postalCode")
-    public void inputCredential(String firstName,String lastName, String postalCode) {
+    public void inputCredential(String firstName,String lastName, String postalCode){
         BuyPage buyPage = new BuyPage(webDriver);
         buyPage.setFirstName(firstName);
         buyPage.setLastName(lastName);
         buyPage.setPostalCode(postalCode);
         buyPage.continueClick();
+
     }
-    @Given("User already on checkoutOverview page")
-    public void verifyCheckoutOverview() {
+    @Then("User Verify checkoutOverview page")
+    public void verifyCheckoutOverview() throws InterruptedException {
         BuyPage buyPage = new BuyPage(webDriver);
         Assert.assertTrue(buyPage.verifyCartItem());
+        Thread.sleep(1000);
     }
-    @And("User have finish purchase the product")
+    @And("User has finished purchase the product")
     public void finishCheckout(){
         BuyPage buyPage = new BuyPage(webDriver);
         buyPage.finishButtonClick();
